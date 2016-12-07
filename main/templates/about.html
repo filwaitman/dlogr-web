@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Dlogr - about{% endblock %}
+
+{% block content %}
+    <header class="page-header">
+        <h1 class="page-title">About</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>What is Dlogr?</h3>
+                <p>
+                    Dlogr is a object-oriented logging. It means that you should definitely use it to track things like your users' activities, your orders' status, etc.
+                </p>
+                <p>
+                    Please note that Dlog is not a general purpose, traditional logging tool. Dlogr aims to provide a logging over rich objects, enriching them with events/metadata. If you want a traditional logging tool please check other amazing projects such as <a href="https://papertrailapp.com/">Papertrail</a>, <a href="https://www.splunk.com/">Splunk</a> and <a href="https://logentries.com">Logentries</a>.
+                </p>
+            </div>
+
+            <div class="col-sm-12">
+                <h3>How much is Dlogr?</h3>
+                <p>
+                    Dlogr is absolutely free. No ads, no trial. It's an <a href="{{ github.dlogr_web.main }}">open source project</a> also. We believe on open source power. =]
+                </p>
+                <p>
+                    For the time being the team itself is bearing with the costs (infrastructure + development) of this project. Unfortunately, we can't maintain it like this forever so any help will be very appreciated.
+                </p>
+            </div>
+
+            <div class="col-sm-12">
+                <h3>How can I help you support Dlogr?</h3>
+                <p>
+                    Any kind of support is extremely welcome! There are plenty ways to help us:<br>
+                    * Donate to the developers;<br>
+                    * Contribute to our project (by developing new clients, working on some new features, etc);<br>
+                    * Send us some feedback/suggestions.<br>
+                </p>
+                <p>
+                    For more details about all those kinds of support please <a href="{% url 'support-us' %}">click here</a>.
+                </p>
+            </div>
+
+            <div class="col-sm-12">
+                <h3>How do I integrate my current project with Dlogr?</h3>
+                <p>
+                    We receive your data through API. So you just need to send a request to us with the data you want us to track, and we'll take care of that.  =)
+                </p>
+                <p>
+                    If your project is running python, its even easier: We developed a python client so you all you need is to add on your codebase about 5 lines of code... and you're up and running with us.
+                </p>
+                <p>
+                    Please refer to the <a href="#">API full documentation</a> or to the <a href="#">Python client documentation</a> for more details.
+                </p>
+            </div>
+        </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

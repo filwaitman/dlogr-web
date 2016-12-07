@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load main_extras %}
+
+{% block title %}Dlogr - Dashboard{% endblock %}
+
+{% block outer_content %}
+    {% include 'chunk_messages.html' %}
+    <div class="breadcrumb"></div>
+
+    <div class="container">
+    {% if api_ok %}
+        <div class="row">
+            <form>
+              <div class="col-lg-offset-6 col-lg-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="search" id="id_search" autofocus placeholder="{% if search %}[Hit <Enter> to clear current search] {% endif %}Search events!">
+                  <span class="input-group-btn">
+                    <input type="submit" class="btn btn-default custom-btn-input-group" value="Search" />
+                  </span>
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+            </form>
+        </div>
+        {% if search %}
+            <h1>Search results</h1>
+        {% else %}
+            <h1>Last events received</h1>
+        {% endif %}
+
+        {% for event in events.results %}
+            <h3>{{ event.human_identifier}}: {{ event.message }}</h3>
+            <p class="text-muted">
+                <a href="{% url 'dashboard-detail' object_type=event.object_type object_id=event.object_id %}">
+                    {{ event.object_type}} / {{ event.object_id }}
+                </a>
+            </p>
+            <p class="text-muted">at {{ event.timestamp|utc_to_local:request.session.user.timezone|date_formatted }} ({{ event.timestamp|humanize_date }})</p>
+            <hr/>
+        {% empty %}
+            <h3>Nothing here - yet.</h3>
+            <p><a href="{% url 'welcome' %}">Click here</a> to get a walkthrough on how to connect with us.</p>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}

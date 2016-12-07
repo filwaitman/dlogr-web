@@ -1,0 +1,22 @@
+# dlogr itself
+dlogr==0.0.0.2
+
+# Django
+Django==1.10
+django-environ==0.4.0
+
+# Database
+psycopg2==2.6.2
+
+# Heroku
+gunicorn==19.6.0
+dj-database-url==0.4.1
+whitenoise==3.2.2
+
+# Heroku addons
+newrelic==2.72.1.53
+rollbar==0.13.8
+
+# Datetime utils
+arrow==0.8.0
+pytz==2016.7

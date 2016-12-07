@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Dlogr - Settings{% endblock %}
+
+{% block content %}
+	<header class="page-header">
+		<h1 class="page-title">Settings</h1>
+	</header>
+
+	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h3 class="thin text-center">Settings</h3>
+				<hr>
+
+				<form method="POST">
+                    {% csrf_token %}
+
+                    <div class="top-margin">
+                        <label>API Auth Token <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <input type="password" class="form-control showhidepassword_field" name="api_auth_token" id="id_api_auth_token" value="{{ request.session.user.auth_token }}" readonly>
+                            <span class="input-group-btn">
+                                <button id="showhidepassword" class="btn btn-default custom-btn-input-group">
+                                    <span class="glyphicon glyphicon-eye-open showhidepassword_glyphicon" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+					<div class="top-margin">
+                        <label>Name <span class="text-danger">*</span></label>
+						<input type="text" class="form-control" name="name" id="id_name" value="{{ request.session.user.name }}" required autofocus>
+					</div>
+
+					<div class="top-margin">
+						<label>Email Address <span class="text-danger">*</span></label>
+						<input type="email" class="form-control" name="email" id="id_email" value="{{ request.session.user.email }}" required>
+					</div>
+
+                    <div class="top-margin">
+                        <label>Timezone <span class="text-danger">*</span></label>
+                        <select class="form-control" name="timezone" id="id_timezone" value="{{ request.session.user.timezone }}" required>
+                            {% for option_value, option_label in timezone_choices %}
+                                <option value="{{ option_value }}"{% if option_value == request.session.user.timezone  %} selected{% endif %}>{{ option_label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+					<hr>
+					<div class="row">
+						<div class="col-lg-8">
+                            <b><a href="{% url 'change-password' %}">Change password</a></b>
+						</div>
+						<div class="col-lg-4 text-right">
+							<button class="btn btn-action" type="submit">Update</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

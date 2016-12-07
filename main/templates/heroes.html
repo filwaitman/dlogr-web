@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n %}
+
+{% block title %}Dlogr - heroes{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/cyan-m-patch.css' %}">
+{% endblock %}
+
+{% block content %}
+    <header class="page-header">
+        <h1 class="page-title">Heroes</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12" style="padding-bottom: 20px;">
+                <h2>Our Super Heroes</h2>
+                <h4>People who helped us immensely with either donations or development contributions.</h4>
+            </div>
+            <div class="row container-fluid section-wrapper">
+            {% for hero in super_heroes %}
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-top: 10px;">
+                    <div>
+                        <div class="profile-circle">
+                            <div>
+                                <div class="profile lg-size" style="background-image: url({{ hero.image }});"></div>
+                            </div>
+                            <h3>{{ hero.name }}</h3>
+                            <hr style="max-width: none">
+                            {% if hero.link %}
+                                <p class="text-block text-center"><a href="{{ hero.link }}">{{ hero.link }}</a></p>
+                            {% endif %}
+                            <p class="text-block text-center">{{ hero.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+
+            <div class="col-sm-12" style="padding-bottom: 20px;">
+                <h2>Our Heroes</h2>
+                <h4>People who helped us with either donations or development contributions.</h4>
+            </div>
+            {% for hero in regular_heroes %}
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><p class="text-center">{{ hero.name }}</p></div>
+            {% empty %}
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <p>Nobody here - yet. =(</p>
+                    <p>What about <a href="{% url 'support-us' %}">be the first one?</a></p>
+                </div>
+            {% endfor %}
+
+            <div class="col-sm-12" style="padding-top: 20px;">
+                <p><strong>
+                    You can be a hero/super hero as well! <a href="{% url 'support-us' %}">Check it out!</a>
+                </strong></p>
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block title %}Dlogr - support us{% endblock %}
+
+{% block content %}
+    <header class="page-header">
+        <h1 class="page-title">Support us</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <p>
+                    We are free and we really want to keep this policy. However, we need some support to keep this is we want to.
+                    Below you will find ways to help us on this journey.
+                </p>
+            </div>
+
+            <div class="col-sm-12">
+                <h3>Donations</h3>
+                <p>
+                    This is the most simple and most helpful way to support us for the time being. We need to bear with infrastructure
+                    and development costs, and if we don't get a way to share those expenses this will become a showstopper for us shortly.
+                    Any value will be appreciated.
+                </p>
+                <p>
+                    Ah! Don't forget to let us know after a donation is made so we can put your (individual/company) name on our <a href="#">heroes list</a>. =]
+                </p>
+                <br>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <p class="text-center" width="100%">
+                    <!-- https://www.paypal.com/br/cgi-bin/webscr?cmd=_button-designer&factory_type=buynow -->
+                    <form class="text-center" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><!-- was target="_top" -->
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <table class="text-center" width="100%">
+                    <tr><td><input type="hidden" name="on0" value="In dollars (US$)">In dollars (US$)</td></tr><tr><td><select name="os0">
+                        <option value="Option 1:">Option 1: $5,00 USD</option>
+                        <option value="Option 2:">Option 2: $10,00 USD</option>
+                        <option value="Option 3:">Option 3: $25,00 USD</option>
+                        <option value="Option 4:">Option 4: $50,00 USD</option>
+                        <option value="Option 5:">Option 5: $100,00 USD</option>
+                    </select> </td></tr>
+                    </table>
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+                    ">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </p>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <p class="text-center" width="100%">
+                    <!-- https://www.paypal.com/br/cgi-bin/webscr?cmd=_button-designer&factory_type=buynow -->
+                    <form class="text-center" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><!-- was target="_top" -->
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <table class="text-center" width="100%">
+                    <tr><td><input type="hidden" name="on0" value="In reais (BR$)">In reais (BR$)</td></tr><tr><td><select name="os0">
+                        <option value="Option 1:">Option 1: R$5,00</option>
+                        <option value="Option 2:">Option 2: R$10,00</option>
+                        <option value="Option 3:">Option 3: R$25,00</option>
+                        <option value="Option 4:">Option 4: R$50,00</option>
+                        <option value="Option 5:">Option 5: R$100,00</option>
+                    </select> </td></tr>
+                    </table>
+                    <input type="hidden" name="currency_code" value="BRL">
+                    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+                    ">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </p>
+            </div>
+
+            <div class="col-sm-12">
+                <h3>Development contributions</h3>
+                <p>
+                    Code is power!
+                </p>
+                <p>
+                    If you're a developer I would love to receive some help on creating new features, solving issues and developing new clients!
+                </p>
+                <p>
+                    For now we have the following repositories on GitHub: <a href="{{ github.dlogr_api.main }}">Dlogr API</a>, <a href="{{ github.dlogr_web.main }}">Dlogr Web client</a> and <a href="{{ github.dlogr_python.main }}">Dlogr Python client</a>.
+                </p>
+                <p>
+                    Each of those repositores has its details regarding coding styles, how to set up the project and run it locally, documentation and so on. Also, we are using the GitHub issue tracker to centralize our known issues and features backlog. You can grab some issue and send us some pull request. You'll be on our <a href="#">heroes list</a> as well.
+                </p>
+            </div>
+
+            <div class="col-sm-12">
+                <h3>Suggestions and feedback</h3>
+                <p>
+                    We'd love to hear your thoughts!
+                </p>
+                <p>
+                    If you like (or dislike) something, or have some ideas to make Dlogr even nicer, please send us an email: <a href="mailto:support@dlogr.com">support@dlogr.com</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

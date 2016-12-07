@@ -1,0 +1,78 @@
+.lg-size.profile {
+    height:130px;
+    width:130px;
+}
+
+.profile,.profile-circle {
+    max-width:450px;
+}
+
+.profile-circle {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.profile-circle>hr {
+    max-width:80px;
+    margin-top:18px;
+    margin-bottom:15px;
+    border-color:#e0e0e0;
+}
+
+.profile-circle>p {
+    color:#9e9e9e;
+    max-height:80px;
+    overflow:hidden;
+}
+
+.profile-circle>button {
+    background:0 0;
+    border:none;
+    font-weight:300;
+    overflow:hidden;
+    position:relative;
+    display:block;
+    font-size:14px;
+    color:#757575;
+    margin:5px auto auto;
+}
+
+.profile-circle .hover-content {
+    overflow:hidden;
+    position:relative;
+    border-radius:50%;
+    max-width:200px;
+    max-height:200px;
+    margin:auto;
+}
+
+.profile-circle:hover .content-circle {
+    opacity:1;
+    -webkit-transform:scale(1);
+    -ms-transform:scale(1);
+    transform:scale(1);
+}
+
+.profile {
+    background-size:cover;
+    background-position:center center;
+    border-radius:50%;
+    margin:auto;
+}
+
+.bottom-part,.circle-icons i,.content-open h3,.content-open p,.content-open small,.dark-icons i,.grid-portfolio,.i-width,.i-width-sm,.icon .control i,.icon-bg,.info-bar>li i,.lg-subtitle,.lg-tabs,.lg-title,.profile,.profile-circle,.top-part,.back-to-top,.footer,.knobs,.owl-pagination,.preloader-wrap,.switcher-icon {
+    text-align:center;
+}
+
+.info-list.md-list li:last-child,.info-list.sm-list li:last-child,.info-list>li:last-child,.info-bar>li>p,.dl-horizontal,.profile-circle>h3,.profile-circle>p {
+    margin-bottom:0;
+}
+
+
+.text-block {
+    font-size:16px;
+    line-height:26px;
+    font-weight:300;
+    color:#9e9e9e;
+}
+

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Dlogr - welcome{% endblock %}
+
+{% block content %}
+    <header class="page-header">
+        <h1 class="page-title">Welcome!</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <p>
+                    Hey {{ request.session.user.name }}, I hope you're enjoying us!
+                </p>
+                <p>
+                    Sounds like we are starting this journey together now, so let me help you on your next steps.
+                </p>
+            </div>
+
+            <div class="col-sm-12">
+                <h3>Write down your API auth token</h3>
+                <p>
+                    Your API auth token is: <strong>{{ request.session.user.auth_token }}</strong>
+                </p>
+                <p>
+                    Please memorize that. Just kidding.
+                </p>
+                <p>
+                    You'll need this key to connect your app with us. You can always check your API key on your <a href="{% url 'settings' %}">preferences</a> page.
+                </p>
+            </div>
+
+            <div class="col-sm-12">
+                <h3>Prepare your project to connect with us</h3>
+                <p>
+                    As we already mentioned, connecting with us is pretty simple - specially if your project is running on Python.
+                </p>
+                <p>
+                    If you're using Python please refer to <a href="{{ github.dlogr_python.main }}">Python Client documentation</a>.
+                </p>
+                <p>
+                    Now, if you're using something else, don't panic. Just refer to the <a href="{{ github.dlogr_api.main }}">API documentation</a>.
+                </p>
+            </div>
+            <div class="col-sm-12">
+                <h3>Send us some data!</h3>
+                <p>
+                    After this simple setup you're good to go!
+                </p>
+                <p>
+                    As soon as you receive your very first event, it will appear on your dashboard.
+                    <a href="{% url 'dashboard' %}">Click here to access it</a>!
+                </p>
+            </div>
+        </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

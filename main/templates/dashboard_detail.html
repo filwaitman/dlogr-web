@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load main_extras %}
+
+{% block title %}Dlogr - Dashboard{% endblock %}
+
+{% block outer_content %}
+    {% include 'chunk_messages.html' %}
+    <div class="breadcrumb"></div>
+
+    <div class="container">
+    {% if api_ok %}
+        <h1>History for {{ human_identifier }}</h1>
+
+        <div id='timeline-embed' style="width: 100%; height: 350px"></div>
+
+        <h3>Events list</h3>
+        {% for event in events.results %}
+            <h3>{{ event.human_identifier}}: {{ event.message }}</h3>
+            <p class="text-muted">{{ event.object_type}} / {{ event.object_id }}</p>
+            <p class="text-muted">at {{ event.timestamp|utc_to_local:request.session.user.timezone|date_formatted }} ({{ event.timestamp|humanize_date }})</p>
+            <hr/>
+        {% empty %}
+            <h3>No items here - yet.</h3>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+
+    {% if api_ok and has_results %}
+        <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+        <script type="text/javascript">
+          var additionalOptions = {
+            start_at_end: true,
+            hash_bookmark: true,
+            duration: 600,
+            zoom_sequence: [0.5, 1, 2, 3, 5, 8, 13],
+            // initial_zoom: 13,
+            // default_bg_color: {r:0, g:0, b:0},
+            // timenav_height: 250
+          }
+          var timeline_json = {
+            'events': [
+                {% for event in events.results %}
+                    {
+                        'start_date': {
+                            'year': {{ event.timestamp|utc_to_local:request.session.user.timezone|attr:'year' }},
+                            'month': {{ event.timestamp|utc_to_local:request.session.user.timezone|attr:'month' }},
+                            'day': {{ event.timestamp|utc_to_local:request.session.user.timezone|attr:'day' }},
+                            'hour': {{ event.timestamp|utc_to_local:request.session.user.timezone|attr:'hour' }},
+                            'minute': {{ event.timestamp|utc_to_local:request.session.user.timezone|attr:'minute' }},
+                            'second': {{ event.timestamp|utc_to_local:request.session.user.timezone|attr:'second' }},
+                        },
+                        'text': {
+                            'headline': '{{ event.message }}',
+                            'text': '{{ event.message }}',
+                        }
+                    },
+                {% endfor %}
+            ]
+          }
+          timeline = new TL.Timeline('timeline-embed', timeline_json, additionalOptions);
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,4 @@
+coverage==4.2
+arrow==0.8.0
+flake8==3.0.4
+freezegun==0.3.8
