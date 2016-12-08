@@ -76,7 +76,7 @@ class SigninViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['signin.html', ])
-        self.assertTrue('Unable to login with credentials provided.' in response.content)
+        self.assertTrue('Unable to login with credentials provided.' in response.content.decode('utf-8'))
 
     def test_api_out(self):
         self.client_call.side_effect = DlogrAPIError()
@@ -85,7 +85,7 @@ class SigninViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['signin.html', ])
-        self.assertTrue(APIInternalError.message in response.content)
+        self.assertTrue(APIInternalError.message in response.content.decode('utf-8'))
 
 
 class SignupViewTestCase(BaseTestCase):
@@ -120,7 +120,7 @@ class SignupViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['signup.html', ])
-        self.assertTrue('Passwords did not match.' in response.content)
+        self.assertTrue('Passwords did not match.' in response.content.decode('utf-8'))
 
     def test_invalid_payload(self):
         response_mocked = mock.Mock(status_code=400)
@@ -131,7 +131,7 @@ class SignupViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['signup.html', ])
-        self.assertTrue('email: customer with this email already exists.' in response.content)
+        self.assertTrue('email: customer with this email already exists.' in response.content.decode('utf-8'))
 
     def test_api_out(self):
         self.client_call.side_effect = DlogrAPIError()
@@ -140,7 +140,7 @@ class SignupViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['signup.html', ])
-        self.assertTrue(APIInternalError.message in response.content)
+        self.assertTrue(APIInternalError.message in response.content.decode('utf-8'))
 
 
 class DashboardViewTestCase(BaseTestCase):
@@ -165,7 +165,7 @@ class DashboardViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['dashboard.html', ])
-        self.assertTrue('<h3>Nothing here - yet.</h3>' in response.content)
+        self.assertTrue('<h3>Nothing here - yet.</h3>' in response.content.decode('utf-8'))
 
     def test_events(self):
         self.login()
@@ -177,25 +177,25 @@ class DashboardViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['dashboard.html', ])
-        self.assertTrue('Last events received' in response.content)
-        self.assertFalse('<h3>No items found.</h3>' in response.content)
-        self.assertFalse('Search results' in response.content)
-        self.assertFalse('[Hit <Enter> to clear current search]' in response.content)
+        self.assertTrue('Last events received' in response.content.decode('utf-8'))
+        self.assertFalse('<h3>No items found.</h3>' in response.content.decode('utf-8'))
+        self.assertFalse('Search results' in response.content.decode('utf-8'))
+        self.assertFalse('[Hit <Enter> to clear current search]' in response.content.decode('utf-8'))
 
-        self.assertTrue(EVENT_OBJECT1['human_identifier'] in response.content)
-        self.assertTrue(EVENT_OBJECT1['object_id'] in response.content)
-        self.assertTrue(EVENT_OBJECT1['object_type'] in response.content)
-        self.assertTrue(EVENT_OBJECT1['message'] in response.content)
+        self.assertTrue(EVENT_OBJECT1['human_identifier'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT1['object_id'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT1['object_type'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT1['message'] in response.content.decode('utf-8'))
 
-        self.assertTrue(EVENT_OBJECT2['human_identifier'] in response.content)
-        self.assertTrue(EVENT_OBJECT2['object_id'] in response.content)
-        self.assertTrue(EVENT_OBJECT2['object_type'] in response.content)
-        self.assertTrue(EVENT_OBJECT2['message'] in response.content)
+        self.assertTrue(EVENT_OBJECT2['human_identifier'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT2['object_id'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT2['object_type'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT2['message'] in response.content.decode('utf-8'))
 
-        self.assertTrue(EVENT_OBJECT3['human_identifier'] in response.content)
-        self.assertTrue(EVENT_OBJECT3['object_id'] in response.content)
-        self.assertTrue(EVENT_OBJECT3['object_type'] in response.content)
-        self.assertTrue(EVENT_OBJECT3['message'] in response.content)
+        self.assertTrue(EVENT_OBJECT3['human_identifier'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT3['object_id'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT3['object_type'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT3['message'] in response.content.decode('utf-8'))
 
     def test_search(self):
         self.login()
@@ -207,25 +207,25 @@ class DashboardViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['dashboard.html', ])
-        self.assertTrue('Search results' in response.content)
-        self.assertTrue('[Hit <Enter> to clear current search]' in response.content)
-        self.assertFalse('Last events received' in response.content)
-        self.assertFalse('<h3>No items found.</h3>' in response.content)
+        self.assertTrue('Search results' in response.content.decode('utf-8'))
+        self.assertTrue('[Hit <Enter> to clear current search]' in response.content.decode('utf-8'))
+        self.assertFalse('Last events received' in response.content.decode('utf-8'))
+        self.assertFalse('<h3>No items found.</h3>' in response.content.decode('utf-8'))
 
-        self.assertTrue(EVENT_OBJECT1['human_identifier'] in response.content)
-        self.assertTrue(EVENT_OBJECT1['object_id'] in response.content)
-        self.assertTrue(EVENT_OBJECT1['object_type'] in response.content)
-        self.assertTrue(EVENT_OBJECT1['message'] in response.content)
+        self.assertTrue(EVENT_OBJECT1['human_identifier'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT1['object_id'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT1['object_type'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT1['message'] in response.content.decode('utf-8'))
 
-        self.assertTrue(EVENT_OBJECT2['human_identifier'] in response.content)
-        self.assertTrue(EVENT_OBJECT2['object_id'] in response.content)
-        self.assertTrue(EVENT_OBJECT2['object_type'] in response.content)
-        self.assertTrue(EVENT_OBJECT2['message'] in response.content)
+        self.assertTrue(EVENT_OBJECT2['human_identifier'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT2['object_id'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT2['object_type'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT2['message'] in response.content.decode('utf-8'))
 
-        self.assertTrue(EVENT_OBJECT3['human_identifier'] in response.content)
-        self.assertTrue(EVENT_OBJECT3['object_id'] in response.content)
-        self.assertTrue(EVENT_OBJECT3['object_type'] in response.content)
-        self.assertTrue(EVENT_OBJECT3['message'] in response.content)
+        self.assertTrue(EVENT_OBJECT3['human_identifier'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT3['object_id'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT3['object_type'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT3['message'] in response.content.decode('utf-8'))
 
     def test_api_out(self):
         self.login()
@@ -235,7 +235,7 @@ class DashboardViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['dashboard.html', ])
-        self.assertTrue(APIInternalError.message in response.content)
+        self.assertTrue(APIInternalError.message in response.content.decode('utf-8'))
 
 
 class DashboardDetailViewTestCase(BaseTestCase):
@@ -261,8 +261,8 @@ class DashboardDetailViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['dashboard_detail.html', ])
-        self.assertTrue('No items here - yet.' in response.content)
-        self.assertFalse('timeline = new TL.Timeline' in response.content)  # JS initialization
+        self.assertTrue('No items here - yet.' in response.content.decode('utf-8'))
+        self.assertFalse('timeline = new TL.Timeline' in response.content.decode('utf-8'))  # JS initialization
 
     def test_events(self):
         self.login()
@@ -274,23 +274,23 @@ class DashboardDetailViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['dashboard_detail.html', ])
-        self.assertTrue('timeline = new TL.Timeline' in response.content)  # JS initialization
-        self.assertFalse('No items here - yet.' in response.content)
+        self.assertTrue('timeline = new TL.Timeline' in response.content.decode('utf-8'))  # JS initialization
+        self.assertFalse('No items here - yet.' in response.content.decode('utf-8'))
 
-        self.assertTrue(EVENT_OBJECT1['human_identifier'] in response.content)
-        self.assertTrue(EVENT_OBJECT1['object_id'] in response.content)
-        self.assertTrue(EVENT_OBJECT1['object_type'] in response.content)
-        self.assertTrue(EVENT_OBJECT1['message'] in response.content)
+        self.assertTrue(EVENT_OBJECT1['human_identifier'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT1['object_id'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT1['object_type'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT1['message'] in response.content.decode('utf-8'))
 
-        self.assertTrue(EVENT_OBJECT2['human_identifier'] in response.content)
-        self.assertTrue(EVENT_OBJECT2['object_id'] in response.content)
-        self.assertTrue(EVENT_OBJECT2['object_type'] in response.content)
-        self.assertTrue(EVENT_OBJECT2['message'] in response.content)
+        self.assertTrue(EVENT_OBJECT2['human_identifier'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT2['object_id'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT2['object_type'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT2['message'] in response.content.decode('utf-8'))
 
-        self.assertTrue(EVENT_OBJECT3['human_identifier'] in response.content)
-        self.assertTrue(EVENT_OBJECT3['object_id'] in response.content)
-        self.assertTrue(EVENT_OBJECT3['object_type'] in response.content)
-        self.assertTrue(EVENT_OBJECT3['message'] in response.content)
+        self.assertTrue(EVENT_OBJECT3['human_identifier'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT3['object_id'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT3['object_type'] in response.content.decode('utf-8'))
+        self.assertTrue(EVENT_OBJECT3['message'] in response.content.decode('utf-8'))
 
     def test_api_out(self):
         self.login()
@@ -300,7 +300,7 @@ class DashboardDetailViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['dashboard_detail.html', ])
-        self.assertTrue(APIInternalError.message in response.content)
+        self.assertTrue(APIInternalError.message in response.content.decode('utf-8'))
 
 
 class SignoutViewTestCase(BaseTestCase):
@@ -331,7 +331,8 @@ class ResetPasswordViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertTrue(
-            'An email has been sent to filwaitman@gmail.com with reset password instructions.' in response.content
+            'An email has been sent to filwaitman@gmail.com with reset password instructions.' in
+            response.content.decode('utf-8')
         )
         self.assertEquals(response.template_name, ['reset-password.html', ])
 
@@ -345,7 +346,7 @@ class ResetPasswordViewTestCase(BaseTestCase):
         response = self.client.post(self.url, self.data, follow=True)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTrue('I cannot even imagine what could be raised here.' in response.content)
+        self.assertTrue('I cannot even imagine what could be raised here.' in response.content.decode('utf-8'))
         self.assertEquals(response.template_name, ['reset-password.html', ])
 
     def test_api_out(self):
@@ -355,7 +356,7 @@ class ResetPasswordViewTestCase(BaseTestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.template_name, ['reset-password.html', ])
-        self.assertTrue(APIInternalError.message in response.content)
+        self.assertTrue(APIInternalError.message in response.content.decode('utf-8'))
 
 
 class ChangeForgottenPasswordViewTestCase(BaseTestCase):
@@ -378,7 +379,7 @@ class ChangeForgottenPasswordViewTestCase(BaseTestCase):
         response = self.client.post(self.url, self.data, follow=True)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTrue('Password changed successfully.' in response.content)
+        self.assertTrue('Password changed successfully.' in response.content.decode('utf-8'))
 
     def test_password_mismatch(self):
         data = self.data.copy()
@@ -387,7 +388,7 @@ class ChangeForgottenPasswordViewTestCase(BaseTestCase):
         response = self.client.post(self.url, data, follow=True)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTrue('Passwords did not match.' in response.content)
+        self.assertTrue('Passwords did not match.' in response.content.decode('utf-8'))
 
     def test_invalid_payload(self):
         response_mocked = mock.Mock(status_code=400)
@@ -399,7 +400,7 @@ class ChangeForgottenPasswordViewTestCase(BaseTestCase):
         response = self.client.post(self.url, self.data, follow=True)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTrue('Reset token is invalid (or has expired).' in response.content)
+        self.assertTrue('Reset token is invalid (or has expired).' in response.content.decode('utf-8'))
 
     def test_api_out(self):
         self.client_call.side_effect = DlogrAPIError()
@@ -407,7 +408,7 @@ class ChangeForgottenPasswordViewTestCase(BaseTestCase):
         response = self.client.post(self.url, self.data, follow=True)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTrue(APIInternalError.message in response.content)
+        self.assertTrue(APIInternalError.message in response.content.decode('utf-8'))
 
 
 class VerifyAccountViewTestCase(BaseTestCase):
@@ -425,7 +426,7 @@ class VerifyAccountViewTestCase(BaseTestCase):
         response = self.client.get(self.url, follow=True)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTrue('Account verified successfully.' in response.content)
+        self.assertTrue('Account verified successfully.' in response.content.decode('utf-8'))
         self.assertEquals(response.template_name, ['dashboard.html', ])
 
     def test_invalid_payload(self):
@@ -438,7 +439,7 @@ class VerifyAccountViewTestCase(BaseTestCase):
         response = self.client.get(self.url, follow=True)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTrue('Reset token is invalid (or has expired).' in response.content)
+        self.assertTrue('Reset token is invalid (or has expired).' in response.content.decode('utf-8'))
         self.assertEquals(response.template_name, ['signin.html', ])
 
     def test_api_out(self):
@@ -447,5 +448,5 @@ class VerifyAccountViewTestCase(BaseTestCase):
         response = self.client.get(self.url, follow=True)
 
         self.assertEquals(response.status_code, 200)
-        self.assertTrue(APIInternalError.message in response.content)
+        self.assertTrue(APIInternalError.message in response.content.decode('utf-8'))
         self.assertEquals(response.template_name, ['signin.html', ])

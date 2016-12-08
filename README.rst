@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/filwaitman/dlogr-web.svg?branch=master
+    :target: https://travis-ci.org/filwaitman/dlogr-web
+
 Dlogr Web
 =========
 
