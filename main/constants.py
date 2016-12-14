@@ -28,7 +28,7 @@ TIMEZONE_CHOICES = [[x[0], x[1]] for x in TIMEZONE_CHOICES]
 
 
 REGULAR_HEROES = sorted([
-    # {'name': 'Filipe Waitman'},
+    {'name': 'Low Kian Seong'},
 ], key=lambda x: x['name'])
 
 SUPER_HEROES = sorted([
