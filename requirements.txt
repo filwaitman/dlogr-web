@@ -1,5 +1,5 @@
 # dlogr itself
-dlogr==0.0.2
+dlogr==0.0.3
 
 # Django
 Django==1.10
