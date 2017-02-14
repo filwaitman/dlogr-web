@@ -1,6 +1,10 @@
 .. image:: https://travis-ci.org/filwaitman/dlogr-web.svg?branch=master
     :target: https://travis-ci.org/filwaitman/dlogr-web
 
+**WARNING**: Although this project is still on heroku, it's using free dynos (sloooow) and has no SSL on it. I tried to maintain it on my own but I couldn't afford anymore for that.
+
+So you can use it on heroku at your on risk, or you can configure the server on your environment. Try it, It's really simple. Let me know if you have any doubts on how to do this.  =]
+
 Dlogr Web
 =========
 
